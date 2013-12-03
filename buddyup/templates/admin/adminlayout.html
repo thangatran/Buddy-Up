@@ -1,0 +1,53 @@
+{% from "lib.html" import flash_all %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %} - Buddy Up</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="{{ css('bootstrap.min') }}" rel="stylesheet">
+	<link href="{{ css('bootstrap-responsive.min') }}" rel="stylesheet">
+	<link href="{{ css('style') }}" rel="stylesheet">
+	<link href="{{ css('jq') }}" rel="stylesheet">
+	<link href="{{ css('prettify') }}" rel="stylesheet">
+	<link href="{{ css('theme.bootstrap') }}" rel="stylesheet">
+	<link href="{{ css('jquery.tablesorter.pager') }}" rel="stylesheet">
+
+    <script src="{{ js('jquery') }}"></script>
+    <script src="{{ js('bootstrap') }}"></script>
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body>
+	<header>
+		<div class="navbar navbar-inverse navbar-fixed-top" style:"height:30px;">
+			<div class="navbar-inner">
+				<a class="brand" href="{{ url_for('home') }}">
+					<img id="topbar_logo" src="{{ img('BuddyUpLogo_300x88.png') }}">
+				</a>
+				<ul class="nav" style="margin-top:10px;">
+					<li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+					<li><a href="{{ url_for('admin_user_management') }}">Users Management</a></li>
+					{# No forums for now
+					<li><a href="{{ url_for('admin_forum_management') }}">Forum Management</a></li>
+					#}
+				</ul>
+
+				<ul class="nav pull-right" style="margin-top:10px;">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Welcome, Admin<b class="caret"></b></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+							<li><a tabindex="-1"  href="{{ url_for('help') }}"><i class="icon-comment me_icon"></i> Help </a></li>
+							<li><a tabindex="-1"  href="{{ url_for('logout') }}"><i class="icon-off me_icon"></i>  Log out</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	</div>
+</body>
+</html>

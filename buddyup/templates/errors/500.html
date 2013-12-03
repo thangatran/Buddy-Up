@@ -1,0 +1,14 @@
+{% extends "layout.html" %} 
+{% block extrahead %}
+<style type="text/css">
+body {
+	background-image: url('../static/img/fail-cupcake.jpg');
+	background-size: cover;
+}
+</style>
+{% endblock %}
+{% block content %}  
+<h1 style="color:red;"> Error 500: Internal Service Error! </h1>
+<h3 style="color:blue;"> Sorry, Our server is having some problems.</h3>
+<h3 style="color:blue;"> Our men are currently investigating them.</h3>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Calendar{% endblock %}
+
+{% block extrahead %}
+<script src="{{ js('jquery') }}"></script>
+<script src="{{ js('jquery-ui') }}"></script>
+<script src="{{ js('fullcalendar') }}"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			editable: false,
+			events: {{ events_json|tojson|safe }},
+		});
+	});
+</script>
+{% endblock extrahead %}
+
+{% block content %}
+<br>
+<div id="calendar"></div>
+{% endblock %}

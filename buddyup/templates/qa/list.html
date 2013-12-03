@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+  
+{% block content %}
+<h2 style="text-align:center;"> Questions and Anwsers </h2>
+<button onclick="location.href='{{ url_for('post_question') }}'" type="button" class="btn btn-primary">Need help? Post your question</button>
+
+<div id="actionTable" class="body collapse in">
+	<table class="table table-bordered responsive">
+		<col width="300">
+		<thead>
+			<tr>
+				<th>Number of Answers</th>
+				<th>Questions</th>
+				<th>Post by</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for q in questions %}
+			<tr>
+				<td>
+					<p>{{ q.answer_count }} Answer(s)</p>
+				</td>
+				<td><a href="{{ q.view }}">{{ q.title }}</a></td> 
+				<td>{{ q.user.full_name }}</td>
+				{#- Format:  August 10, 1:30 PM #}
+				<td>{{ q.timestamp.strftime("%b %d, %I:%M %p) }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+
+{% endblock %}

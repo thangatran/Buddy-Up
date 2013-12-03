@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% from "lib.html" import flash_all %}
+
+{% block title %}My Buddies and Study Groups {% endblock %}
+  
+{% block content %}
+{{ flash_all() }}
+<h2> My Buddies and Study Groups </h2>
+<br>
+<div class="container">
+
+    <div class="well span5">
+		<strong><font style="margin-left:150px;" color="2896FF"> My Buddies  </font></strong>
+		<div style="margin-top:20px;">	
+			<ul>
+				{% for user in buddies %}
+				<li>
+					<a href="{{ profile(user) }}">
+						<img src="{{ photo_thumbnail(user) }}" width="50px" height="50px">
+						{{ user.full_name }}
+					</a>
+					<a class="btn btn-danger" style="float:right;" href="{{url_for('unfriend', user_name=user.user_name) }}"> Unfriend </a>
+				</li>
+				<hr>
+				{% endfor %}
+			</ul>   
+		</div>
+	
+	</div>
+    <div class="well span5">
+		<strong><font style="margin-left:150px;" color="2896FF"> My Groups </font></strong>
+		<div style="margin-top:20px;">
+			<ul>
+				{% for event in groups %}
+				<li>
+						<a href="{{ profile(event) }}">
+						<font style="margin-left:10px;" color="2BA515"><b> {{ event.name }} </b> <br> </font>	
+						</a>
+						<a class="btn btn-danger" style="float:right;" href="{{ url_for('leave_event', event_id=event.id) }}"> Leave</a>
+				</li>
+				<hr>
+				{% endfor %}
+			</ul>   
+	</div>
+</div>
+{% endblock %}

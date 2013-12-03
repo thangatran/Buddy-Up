@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block extrahead %}
+<script>
+$(function() {
+	$('.answerbox').hide();
+	$('.answerbutton').click(function(){
+		$('.answerbox').show();
+		$('.answerbutton').hide();
+	});
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="row">
+	<div class="well span6">
+		<h3>Question</h3>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;By {{ q.user.full_name }} on {{ q.timestamp.strftime("%b %d, %I:%M %p) }}</p>
+        <br> 
+        <p>{{ q.contain }}</p>
+	</div>
+</div>
+
+<button type="button" class="btn btn-primary answerbutton">Answer this question</button>
+<div class="row">
+	<form class="answerbox" action={{ url_for('') }} style="margin-left:30px;">
+		<textarea class="span6" style="height: 150px;" name="answer_contain"></textarea>
+		<input type="submit" value="Submit" class="btn btn-success">
+	</form>
+</div>
+<br>  
+
+{% for in %}          
+<div class="row">
+	<div class="well span6">
+		<h4>Answer</h4>
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;By {{ username }} on {{ date }}</p>
+        <br> 
+        <p>{{ answer_contain }}</p>
+	</div>
+	<br><br><br>&nbsp;&nbsp;&nbsp;
+	<button onclick="?" class="btn btn-danger remove">Vote this answer</button>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 vote(s)</p>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> BuddyUp </title>
+<link href="{{ css('bootstrap') }}" rel="stylesheet">
+<link href="{{ css('bootstrap') }}" rel="stylesheet">
+<script src="{{ js('jquery') }}"></script>
+<script src="{{ js('bootstrap') }}"></script>
+</head>
+<body>
+	
+
+<h2> Welcome to BuddyUp! </h2>
+<div class="container">
+	<div class="span4 offset4">
+		<p>
+			<font color="red">BuddyUp </font> is a website created by students, for students.
+		</p>
+		<p><em> It's designed to help you find study buddies and organize face-to- face study groups. Research shows that students who participate in study groups are more likely to succeed academically. </em>
+		</p>
+		<p>Take a few moments to set up your profile and then go exploring.
+		</p>
+		<p>
+			Any ideas or suggestions? Please email Brian Forrester at
+			<a href="mailto:willbforrester@gmail.com"> willbforrester@gmail.com </a>.
+		</p>
+		<p>
+			You're among the first users and your engagement is strongly encouraged! Help yourself, help your peers and make friends.
+		</p>
+		<a class="btn btn-large btn-primary" href="{{ url_for('profile_create') }}" style="margin-left:370px;margin-top: 30px;">  Next </a>
+	</div>
+</div>
+</body>
+</html>

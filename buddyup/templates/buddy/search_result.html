@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% from "lib.html" import flash_all %}
+{% block title %}Buddy Search Results {% endblock %}
+{% block extrahead %}
+
+<style type="text/css">
+.result .name {
+	color:#2BA515;
+	margin-left:10px;
+	font-weight:bold;
+}
+.result .location {
+	color: #E8A40D;
+	margin-left: 10px;
+}
+</style>
+
+{% endblock extrahead %}
+
+{% block content %}
+{{ flash_all() }}
+<h1> Buddies Search Results</h1>
+<div class="well span6 offset2">
+	{% if search_results|length == 0 %}
+		<p class="text-center">No Results Found</p>
+	{% else %}
+		{% for user in search_results %}
+		<div class="result">
+			<img src="{{ photo_thumbnail(user) }}" height="50px" width="50px"
+				class="img-polaroid" style="float:left">
+			<a href="{{ profile(user) }}" class="name"><b>{{ user.full_name }}</b></a> <br>
+			<span class="location">
+				Location: {{ user.location.name }}
+			</span>
+			<a class="btn btn-medium btn-primary" style="float: right;" href="{{ url_for('invite_send', user_name=user.user_name) }}">Invite</a>
+			{% if not loop.last %}
+				<hr>
+			{% endif %}
+		</div>
+		{% endfor %}
+	{% endif %}
+</div>
+{% endblock %}

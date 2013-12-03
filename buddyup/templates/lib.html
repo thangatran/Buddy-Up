@@ -1,0 +1,14 @@
+{% macro flashed(type='success') -%}
+<div class="alert alert-{{type}}">
+	<button type="button" class="close" data-dismiss="alert">x</button>
+	<strong> {{ caller() }} </strong>
+</div>
+{%- endmacro %}
+
+{% macro flash_all(type='success') %}
+	{% for msg in get_flashed_messages() %}
+		{% call flashed() %}
+			{{ msg }}
+		{% endcall %}
+	{% endfor %}
+{% endmacro %}
